@@ -865,3 +865,151 @@ body.dark-mode #darkModeToggle {
     font-size: 1.8rem;
   }
 }
+
+/* Feedback Section */
+.feedback-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.feedback-form {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.feedback-form h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.rating-stars {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 0.5rem 0;
+}
+
+.rating-stars input {
+  display: none;
+}
+
+.rating-stars label {
+  color: var(--gray-color);
+  font-size: 1.5rem;
+  padding: 0 0.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.rating-stars input:checked ~ label,
+.rating-stars input:hover ~ label,
+.rating-stars label:hover {
+  color: var(--secondary-color);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: auto;
+}
+
+.feedback-testimonials {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.feedback-items {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.feedback-item {
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  background: rgba(0, 85, 128, 0.05);
+  border-left: 3px solid var(--primary-color);
+}
+
+.feedback-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.initials {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.feedback-meta {
+  flex: 1;
+}
+
+.feedback-rating {
+  color: var(--secondary-color);
+  margin-bottom: 0.3rem;
+}
+
+.feedback-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.feedback-content p {
+  font-style: italic;
+  color: #555;
+}
+
+.feedback-cta {
+  margin-top: 2rem;
+  text-align: center;
+  font-style: italic;
+  color: var(--primary-color);
+}
+
+/* Dark mode styles */
+body.dark-mode .feedback-form,
+body.dark-mode .feedback-testimonials,
+body.dark-mode .feedback-item {
+  background: #1e1e1e;
+}
+
+body.dark-mode .feedback-content p {
+  color: #ccc;
+}
+
+body.dark-mode .feedback-date {
+  color: #aaa;
+}
+
+body.dark-mode .feedback-item {
+  border-left-color: var(--primary-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .feedback-container {
+    grid-template-columns: 1fr;
+  }
+}
