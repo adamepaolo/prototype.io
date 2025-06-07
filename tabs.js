@@ -64,3 +64,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+function highlightStars(value) {
+    const stars = document.querySelectorAll('.rating-stars label');
+    stars.forEach(star => {
+      const starValue = star.getAttribute('for').replace('star', '');
+      if (starValue <= value) {
+        star.style.color = 'var(--secondary-color)';
+      } else {
+        star.style.color = 'var(--gray-color)';
+      }
+    });
+  }
+  
+  function resetStars() {
+    const stars = document.querySelectorAll('.rating-stars label');
+    stars.forEach(star => {
+      star.style.color = 'var(--gray-color)';
+    });
+  }
+});
