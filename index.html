@@ -42,6 +42,7 @@
       <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
       <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
       <li><a href="#feedback"><i class="fas fa-comment-alt"></i> Feedback</a></li>
+    
       
     </ul>
   </nav>
@@ -106,7 +107,10 @@
           <h3>Team Building</h3>
           <p>Activities and retreats designed to enhance teamwork and collaboration.</p>
         </div>
-        
+        <div class="service-card">
+          <h3>Online Payment Services</h3>
+          <p>Secure and convenient payment solutions for all your online transactions.</p>
+        </div>
       </div>
     </section>
 
@@ -477,6 +481,133 @@
         </div>
       </div>
     </section>
+    <section id="feedback" class="tab-content">
+  <h2><i class="fas fa-comment-alt"></i> Share Your Experience</h2>
+  <p class="section-intro">We value your feedback! Please share your travel experience with us to help us improve our services.</p>
+  
+  <div class="feedback-container">
+    <div class="feedback-form">
+      <h3>Submit Your Feedback</h3>
+      <form id="feedbackForm" action="https://formspree.io/f/manovgqz" method="POST">
+        <input type="hidden" name="Feedback Type" value="Customer Feedback">
+        
+        <div class="form-group">
+          <label for="feedback-name">Name</label>
+          <input type="text" id="feedback-name" name="Name" placeholder="Your name">
+        </div>
+        
+        <div class="form-group">
+          <label for="feedback-email">Email</label>
+          <input type="email" id="feedback-email" name="Email" placeholder="Your email">
+        </div>
+        
+        <div class="form-group">
+          <label for="feedback-trip">Trip Details</label>
+          <input type="text" id="feedback-trip" name="Trip Details" placeholder="Destination and travel dates">
+        </div>
+        
+        <div class="form-group">
+          <label>Overall Rating</label>
+          <div class="rating-stars">
+            <input type="radio" id="star5" name="Rating" value="5">
+            <label for="star5"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star4" name="Rating" value="4">
+            <label for="star4"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star3" name="Rating" value="3">
+            <label for="star3"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star2" name="Rating" value="2">
+            <label for="star2"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star1" name="Rating" value="1">
+            <label for="star1"><i class="fas fa-star"></i></label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="feedback-message">Your Feedback</label>
+          <textarea id="feedback-message" name="Message" rows="5" placeholder="Share your experience with us..." required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="Permission to Publish" value="Yes">
+            I give permission to publish my feedback (name will be displayed as initials)
+          </label>
+        </div>
+        
+        <button type="submit" class="submit-button">
+          <i class="fas fa-paper-plane"></i> Submit Feedback
+        </button>
+      </form>
+    </div>
+    
+    <div class="feedback-testimonials">
+      <h3>Recent Feedback</h3>
+      <div class="feedback-items">
+        <!-- Sample feedback items - you can replace with real feedback -->
+        <div class="feedback-item">
+          <div class="feedback-header">
+            <div class="initials">JR</div>
+            <div class="feedback-meta">
+              <div class="feedback-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="feedback-date">June 15, 2024</div>
+            </div>
+          </div>
+          <div class="feedback-content">
+            <p>"Our family vacation to Boracay was perfectly organized by Gold Corner. The hotel was excellent and all transfers were seamless. Will definitely use their services again!"</p>
+          </div>
+        </div>
+        
+        <div class="feedback-item">
+          <div class="feedback-header">
+            <div class="initials">MS</div>
+            <div class="feedback-meta">
+              <div class="feedback-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="feedback-date">May 28, 2024</div>
+            </div>
+          </div>
+          <div class="feedback-content">
+            <p>"The villa we rented through Gold Corner was even better than the photos. Customer service was responsive throughout our stay. Highly recommended!"</p>
+          </div>
+        </div>
+        
+        <div class="feedback-item">
+          <div class="feedback-header">
+            <div class="initials">AL</div>
+            <div class="feedback-meta">
+              <div class="feedback-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <div class="feedback-date">May 10, 2024</div>
+            </div>
+          </div>
+          <div class="feedback-content">
+            <p>"Great overall experience, though there was a small mix-up with our airport transfer. The team resolved it quickly and professionally."</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="feedback-cta">
+        <p>Your feedback helps us improve our services for future travelers.</p>
+      </div>
+    </div>
+  </div>
+</section>
   </main>
 
   <footer>

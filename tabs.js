@@ -64,7 +64,44 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-function highlightStars(value) {
+// Feedback form functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const feedbackForm = document.getElementById('feedbackForm');
+  
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function(e) {
+      // You can add form validation here if needed
+      const rating = document.querySelector('input[name="Rating"]:checked');
+      
+      if (!rating) {
+        e.preventDefault();
+        alert('Please provide a rating');
+        return false;
+      }
+      
+      // Form will submit to Formspree as configured
+    });
+    
+    // Initialize star rating hover effect
+    const stars = document.querySelectorAll('.rating-stars label');
+    stars.forEach(star => {
+      star.addEventListener('mouseover', function() {
+        const value = this.getAttribute('for').replace('star', '');
+        highlightStars(value);
+      });
+      
+      star.addEventListener('mouseout', function() {
+        const checked = document.querySelector('.rating-stars input:checked');
+        if (checked) {
+          highlightStars(checked.value);
+        } else {
+          resetStars();
+        }
+      });
+    });
+  }
+  
+  function highlightStars(value) {
     const stars = document.querySelectorAll('.rating-stars label');
     stars.forEach(star => {
       const starValue = star.getAttribute('for').replace('star', '');
