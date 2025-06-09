@@ -10,31 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="darkmode.js" defer></script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-      flatpickr("input[type='date']", {
-        altInput: true,
-        altFormat: "F j, Y",
-        dateFormat: "Y-m-d",
-      });
-
-
-      // Show/hide country field based on destination selection
-      const destinationSelect = document.getElementById('destination');
-      const countryField = document.getElementById('country-field');
-      
-      destinationSelect.addEventListener('change', function() {
-        if (this.value === 'International') {
-          countryField.style.display = 'block';
-          document.getElementById('country').setAttribute('required', '');
-        } else {
-          countryField.style.display = 'none';
-          document.getElementById('country').removeAttribute('required');
-        }
-      });
-
-    });
-  </script>
+  <script src="tabs.js" defer></script>
 </head>
 <body>
   <header>
@@ -45,25 +21,27 @@
         <p class="tagline">Your Gateway to the World – Domestic & International Travel Since 2019</p>
       </div>
     </div>
-    <button id="darkModeToggle" aria-label="Toggle Dark Mode" onclick=""><i class="fas fa-moon"></i> Dark Mode</button>
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i> Dark Mode</button>
   </header>
 
   <nav>
     <ul class="nav-menu">
       <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
       <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
       <li><a href="#rentals"><i class="fas fa-home"></i> House Rentals</a></li>
       <li><a href="#booking"><i class="fas fa-calendar-check"></i> Book Now</a></li>
       <li><a href="#testimonials"><i class="fas fa-quote-left"></i> Testimonials</a></li>
       <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
       <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#partners"><i class="fas fa-handshake"></i> Partners</a></li>
       <li><a href="#feedback"><i class="fas fa-comment-alt"></i> Feedback</a></li>
-    
       
     </ul>
   </nav>
 
   <main>
+    <!-- Home Section -->
     <section id="home" class="tab-content active">
       <div class="hero">
         <div class="hero-text">
@@ -91,6 +69,125 @@
         </div>
       </div>
     </section>
+
+    <!-- Blog Section -->
+     <!-- Blog Section (single instance) -->
+    <section id="blog" class="tab-content">
+      <h2><i class="fas fa-blog"></i> Travel Blog</h2>
+      <p class="section-intro">Read our latest travel stories, tips, and destination guides.</p>
+      
+      <div class="blog-actions">
+        <button id="new-post-btn" class="cta-button"><i class="fas fa-plus"></i> New Post</button>
+      </div>
+      
+      <!-- Blog Post Form (initially hidden) -->
+      <div id="blog-post-form" class="blog-form-container" style="display: none;">
+        <h3>Create New Blog Post</h3>
+        <form id="postForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="post-title">Title *</label>
+            <input type="text" id="post-title" name="title" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="post-author">Author *</label>
+            <input type="text" id="post-author" name="author" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="post-date">Date *</label>
+            <input type="date" id="post-date" name="date" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="post-image">Featured Image</label>
+            <input type="file" id="post-image" name="image" accept="image/*">
+          </div>
+          
+          <div class="form-group">
+            <label for="post-content">Content *</label>
+            <textarea id="post-content" name="content" rows="10" required></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="submit-button"><i class="fas fa-save"></i> Publish Post</button>
+            <button type="button" id="cancel-post" class="cancel-button">Cancel</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Blog Posts Container -->
+      <div class="blog-posts" id="blog-posts-container">
+        <!-- Sample Blog Post 1 -->
+        <article class="blog-post">
+          <div class="post-header">
+            <h3 class="post-title">Discovering the Hidden Beaches of Batangas</h3>
+            <div class="post-meta">
+              <span class="post-author"><i class="fas fa-user"></i> Lorie Adame</span>
+              <span class="post-date"><i class="fas fa-calendar-alt"></i> June 15, 2024</span>
+            </div>
+          </div>
+          
+          <div class="post-image">
+            <img src="https://via.placeholder.com/800x400" alt="Batangas Beach">
+          </div>
+          
+          <div class="post-content">
+            <p>Batangas is known for its popular beach destinations, but there are hidden gems waiting to be discovered. On our recent trip, we found several secluded beaches with crystal clear waters and powdery white sand...</p>
+          </div>
+          
+          <div class="post-actions">
+            <button class="read-more">Read More</button>
+          </div>
+        </article>
+        
+        <!-- Sample Blog Post 2 -->
+        <article class="blog-post">
+          <div class="post-header">
+            <h3 class="post-title">Top 5 Tips for First-Time International Travelers</h3>
+            <div class="post-meta">
+              <span class="post-author"><i class="fas fa-user"></i> Gold Corner Team</span>
+              <span class="post-date"><i class="fas fa-calendar-alt"></i> May 28, 2024</span>
+            </div>
+          </div>
+          
+          <div class="post-image">
+            <img src="https://via.placeholder.com/800x400" alt="Travel Tips">
+          </div>
+          
+          <div class="post-content">
+            <p>Traveling abroad for the first time can be both exciting and overwhelming. Based on our experience helping hundreds of clients, here are our top 5 tips to make your first international trip smooth and enjoyable...</p>
+          </div>
+          
+          <div class="post-actions">
+            <button class="read-more">Read More</button>
+          </div>
+        </article>
+      </div>
+      
+      <!-- Full Post View (hidden by default) -->
+      <div id="full-post-view" style="display: none;">
+        <button id="back-to-blog" class="back-button"><i class="fas fa-arrow-left"></i> Back to Blog</button>
+        <article class="full-post">
+          <div class="post-header">
+            <h3 id="full-post-title"></h3>
+            <div class="post-meta">
+              <span class="post-author"><i class="fas fa-user"></i> <span id="full-post-author"></span></span>
+              <span class="post-date"><i class="fas fa-calendar-alt"></i> <span id="full-post-date"></span></span>
+            </div>
+          </div>
+          
+          <div class="post-image">
+            <img id="full-post-image" src="" alt="">
+          </div>
+          
+          <div class="post-content" id="full-post-content">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services Section -->
 
     <section id="services" class="tab-content">
       <h2><i class="fas fa-concierge-bell"></i> Our Services</h2>
@@ -123,19 +220,19 @@
           <h3>Team Building</h3>
           <p>Activities and retreats designed to enhance teamwork and collaboration.</p>
         </div>
-        
       </div>
     </section>
 
+     <!-- House Rentals Section - Fixed Structure -->
     <section id="rentals" class="tab-content">
       <h2><i class="fas fa-home"></i> Vacation House Rentals</h2>
       <div class="rental-intro">
-        <p>Discover our exclusive collection of vacation homes perfect for families, groups, or romantic getaways. Each property is carefully selected for comfort, location, and amenities.</p>
+        <p>Discover our exclusive collection of vacation homes perfect for families, groups, or romantic getaways.</p>
       </div>
 
       <div class="rental-filters">
         <h3>Find Your Perfect Rental</h3>
-        <form class="filter-form">
+        <form class="filter-form" id="rental-search-form">
           <div class="filter-group">
             <label for="location">Location</label>
             <select id="location" name="location">
@@ -144,7 +241,6 @@
               <option value="Boracay">Boracay</option>
               <option value="Palawan">Palawan</option>
               <option value="Cebu">Cebu</option>
-              <option value="International">International</option>
             </select>
           </div>
           
@@ -154,7 +250,6 @@
               <option value="">Any Type</option>
               <option value="Beach House">Beach House</option>
               <option value="Mountain Cabin">Mountain Cabin</option>
-              <option value="City Apartment">City Apartment</option>
               <option value="Villa">Villa</option>
             </select>
           </div>
@@ -169,15 +264,16 @@
             </select>
           </div>
           
-          <button type="submit" class="filter-button">Search Rentals</button>
+          <button type="button" class="filter-button" id="search-rentals">Search Rentals</button>
+          <button type="button" id="clear-filters" class="filter-button">Clear Filters</button>
         </form>
       </div>
 
       <div class="rental-listings">
-        <!-- Sample rental listing - you can duplicate this and edit the details -->
-        <div class="rental-card">
+        <!-- Sample Rental 1 -->
+        <div class="rental-card" data-location="batangas" data-type="beach house" data-bedrooms="3">
           <div class="rental-image">
-            <img src="https://via.placeholder.com/400x300" alt="Sample Rental Property">
+            <img src="https://via.placeholder.com/400x300" alt="Beachfront Villa">
             <span class="price-tag">₱5,500/night</span>
           </div>
           <div class="rental-details">
@@ -193,129 +289,255 @@
               <span><i class="fas fa-swimming-pool"></i> Pool</span>
               <span><i class="fas fa-parking"></i> Parking</span>
             </div>
-            <a href="#contact" class="inquiry-button">Inquire Now</a>
+            
+            <button class="inquiry-button toggle-inquiry">Inquire Now</button>
+            
+            <div class="inquiry-form-container">
+              <form class="rental-inquiry-form" action="https://formspree.io/f/mwpbvzvj" method="POST">
+                <input type="hidden" name="Property" value="Beachfront Villa - Batangas">
+                <div class="form-group">
+                <label for="i-name1">Name *</label>
+                <input type="text" id="i-name1" name="Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-email1">Email *</label>
+                  <input type="email" id="i-email1" name="Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-phone1">Phone *</label>
+                  <input type="tel" id="i-phone1" name="Phone" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-dates1">Desired Dates *</label>
+                  <input type="text" id="i-dates1" name="Dates" class="date-range" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-guests1">Number of Guests *</label>
+                  <input type="number" id="i-guests1" name="Guests" min="1" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-message1">Message</label>
+                  <textarea id="i-message1" name="Message" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-button small">
+                  <i class="fas fa-paper-plane"></i> Send Inquiry
+                </button>
+              </form>
+            </div>
           </div>
         </div>
         
-        <!-- Add more rental cards here following the same structure -->
+        <!-- Sample Rental 2 -->
+        <div class="rental-card" data-location="tagaytay" data-type="mountain cabin" data-bedrooms="2">
+          <div class="rental-image">
+            <img src="https://via.placeholder.com/400x300" alt="Mountain Cabin">
+            <span class="price-tag">₱4,200/night</span>
+          </div>
+          <div class="rental-details">
+            <h3>Mountain Cabin - Tagaytay</h3>
+            <div class="rental-meta">
+              <span><i class="fas fa-bed"></i> 2 Bedrooms</span>
+              <span><i class="fas fa-bath"></i> 1 Bathroom</span>
+              <span><i class="fas fa-users"></i> Sleeps 4</span>
+            </div>
+            <p class="rental-description">Cozy cabin with fireplace, mountain views, and easy access to hiking trails. Perfect for nature lovers.</p>
+            <div class="rental-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-fire"></i> Fireplace</span>
+              <span><i class="fas fa-mountain"></i> View</span>
+            </div>
+            
+            <button class="inquiry-button toggle-inquiry">Inquire Now</button>
+            
+            <div class="inquiry-form-container">
+              <form class="rental-inquiry-form" action="https://formspree.io/f/mwpbvzvj" method="POST">
+                <input type="hidden" name="Property" value="Mountain Cabin - Tagaytay">
+                <div class="form-group">
+                  <label for="i-name2">Name *</label>
+                  <input type="text" id="i-name2" name="Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-email2">Email *</label>
+                  <input type="email" id="i-email2" name="Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-phone2">Phone *</label>
+                  <input type="tel" id="i-phone2" name="Phone" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-dates2">Desired Dates *</label>
+                  <input type="text" id="i-dates2" name="Dates" class="date-range" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-guests2">Number of Guests *</label>
+                  <input type="number" id="i-guests2" name="Guests" min="1" required>
+                </div>
+                <div class="form-group">
+                  <label for="i-message2">Message</label>
+                  <textarea id="i-message2" name="Message" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-button small">
+                  <i class="fas fa-paper-plane"></i> Send Inquiry
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
       
       <div class="rental-cta">
-        <p>Don't see what you're looking for? We have more properties available!</p>
+        <p>Don't see what you're looking for?</p>
         <a href="#contact" class="cta-button">Contact Us for More Options</a>
       </div>
     </section>
 
     <section id="booking" class="tab-content">
-      <h2><i class="fas fa-calendar-check"></i> Travel Inquiry Form</h2>
-      <p class="form-intro">Ready to plan your next adventure? Fill out the form below and our travel experts will get back to you within 24 hours with personalized options.</p>
+      <h2><i class="fas fa-calendar-check"></i> Book Now</h2>
+      <p class="section-intro">Choose the service you'd like to book and fill out the appropriate form below.</p>
       
-      <form action="https://formspree.io/f/mwpbvzvj" method="POST" class="booking-form">
-        <div class="form-column">
-          <div class="form-group">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="Name" placeholder="Your full name" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="Email" placeholder="Your email address" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Contact Number *</label>
-            <input type="tel" id="phone" name="Phone" placeholder="Phone number" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="travel-date">Travel Date *</label>
-            <input type="date" id="travel-date" name="TravelDate" required />
-          </div>
-        </div>
+      <div class="booking-tabs">
+        <button class="booking-tab-btn active" data-tab="travel-form">Travel Booking</button>
+        <button class="booking-tab-btn" data-tab="rental-form">House Rental</button>
+      </div>
+      
+      <!-- Travel Booking Form -->
+      <div id="travel-form" class="booking-form active">
+        <h3>Travel Inquiry Form</h3>
+        <p>Ready to plan your next adventure? Fill out the form below and our travel experts will get back to you within 24 hours.</p>
+        
+        <form action="https://formspree.io/f/mwpbvzvj" method="POST">
+          <input type="hidden" name="Form Type" value="Travel Inquiry">
+          <div class="form-columns">
+            <div class="form-column">
+              <div class="form-group">
+                <label for="t-name">Full Name *</label>
+                <input type="text" id="t-name" name="Name" placeholder="Your full name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="t-email">Email *</label>
+                <input type="email" id="t-email" name="Email" placeholder="Your email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="t-phone">Phone *</label>
+                <input type="tel" id="t-phone" name="Phone" placeholder="Your phone number" required>
+              </div>
+            </div>
+            
+            <div class="form-column">
+              <div class="form-group">
+                <label for="t-date">Travel Dates *</label>
+                <input type="text" id="t-date" name="Travel Dates" placeholder="Select dates" class="date-range" required>
+              </div>
+              
+              <div class="form-group">
+              <label for="t-destination">Destination *</label>
+              <select id="t-destination" name="Destination" required>
+                <option value="" disabled selected>Select destination</option>
+                <option value="Philippines">Philippines</option>
+                <option value="International">International</option>
+              </select>
+            </div>
 
-        <div class="form-column">
-          <div class="form-group">
-            <label for="days">Number of Days *</label>
-            <input type="number" id="days" name="Days" placeholder="Duration of trip" required />
+            <div class="form-group" id="country-field" style="display: none;">
+              <label for="t-country">Country *</label>
+              <input type="text" id="t-country" name="Country" placeholder="Enter country name">
+            </div>
+              
+              <div class="form-group">
+                <label for="t-travelers">Number of Travelers *</label>
+                <input type="number" id="t-travelers" name="Travelers" min="1" required>
+              </div>
+            </div>
           </div>
           
           <div class="form-group">
-            <label for="destination">Destination *</label>
-            <select id="destination" name="Destination" required>
-              <option value="" disabled selected>Select destination</option>
-              <option value="Philippines">Philippines</option>
-              <option value="International">International</option>
-              <option value="Multiple">Multiple Destinations</option>
-            </select>
-            <div id="country-field">
-            <label for="country">Country</label>
-            <input type="text" id="country" name="Country" placeholder="Enter destination country">
-          </div>
-          </div>
-          
-          
-          <div class="form-group">
-            <label for="travelers">Number of Travelers *</label>
-            <input type="text" id="travelers" name="Travelers" placeholder="How many people?" required />
+            <label for="t-interests">Travel Interests</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="Interests" value="Beach"> Beach</label>
+              <label><input type="checkbox" name="Interests" value="Adventure"> Adventure</label>
+              <label><input type="checkbox" name="Interests" value="Cultural"> Cultural</label>
+              <label><input type="checkbox" name="Interests" value="Luxury"> Luxury</label>
+              <label><input type="checkbox" name="Interests" value="Family"> Family</label>
+            </div>
           </div>
           
           <div class="form-group">
-            <label for="travel-type">Type of Travel *</label>
-            <select id="travel-type" name="TravelType" required>
-              <option value="" disabled selected>Select travel type</option>
-              <option value="Solo">Solo</option>
-              <option value="Couple">Couple</option>
-              <option value="Family">Family</option>
-              <option value="Friends">Friends</option>
-              <option value="Corporate">Corporate</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-full-width">
-          <div class="form-group">
-            <label for="budget">Estimated Budget (PHP) *</label>
-            <input type="text" id="budget" name="Budget" placeholder="Your budget range" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="accommodation">Preferred Accommodation *</label>
-            <select id="accommodation" name="Accommodation" required>
-              <option value="" disabled selected>Select accommodation</option>
-              <option value="Hotel">Hotel</option>
-              <option value="Resort">Resort</option>
-              <option value="Vacation Rental">Vacation Rental</option>
-              <option value="Hostel">Hostel</option>
-              <option value="Cruise">Cruise</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="insurance">Travel Insurance Needed? *</label>
-            <select id="insurance" name="TravelInsurance" required>
-              <option value="" disabled selected>Select option</option>
-              <option value="Yes">Yes, please include options</option>
-              <option value="No">No, I'll arrange my own</option>
-              <option value="Advice">I need advice</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="requests">Special Requests</label>
-            <input type="text" id="requests" name="SpecialRequests" placeholder="Dietary needs, accessibility, etc." />
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Tell Us About Your Travel Plans *</label>
-            <textarea id="message" name="Message" rows="5" placeholder="What kind of experience are you looking for? Any must-see destinations or activities?" required></textarea>
+            <label for="t-message">Special Requests *</label>
+            <textarea id="t-message" name="Message" rows="4" placeholder="Tell us about your dream trip..." required></textarea>
           </div>
           
           <button type="submit" class="submit-button">
-            <i class="fas fa-paper-plane"></i> Submit Inquiry
+            <i class="fas fa-paper-plane"></i> Submit Travel Inquiry
           </button>
-        </div>
-      </form>
+        </form>
+      </div>
+      
+      <!-- House Rental Form -->
+      <div id="rental-form" class="booking-form">
+        <h3>House Rental Inquiry</h3>
+        <p>Interested in one of our vacation properties? Fill out the form below to check availability and get more information.</p>
+        
+        <form action="https://formspree.io/f/mwpbvzvj" method="POST">
+          <input type="hidden" name="Form Type" value="Rental Inquiry">
+          <div class="form-columns">
+            <div class="form-column">
+              <div class="form-group">
+                <label for="r-name">Full Name *</label>
+                <input type="text" id="r-name" name="Name" placeholder="Your full name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="r-email">Email *</label>
+                <input type="email" id="r-email" name="Email" placeholder="Your email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="r-phone">Phone *</label>
+                <input type="tel" id="r-phone" name="Phone" placeholder="Your phone number" required>
+              </div>
+            </div>
+            
+            <div class="form-column">
+              <div class="form-group">
+                <label for="r-dates">Desired Dates *</label>
+                <input type="text" id="r-dates" name="Dates" placeholder="Select dates" class="date-range" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="r-guests">Number of Guests *</label>
+                <input type="number" id="r-guests" name="Guests" min="1" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="r-property">Property Interested In</label>
+                <input type="text" id="r-property" name="Property" placeholder="Property name (if known)">
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="r-location">Preferred Location</label>
+            <select id="r-location" name="Location">
+              <option value="" selected>Any Location</option>
+              <option value="Batangas">Batangas</option>
+              <option value="Boracay">Boracay</option>
+              <option value="Palawan">Palawan</option>
+              <option value="Cebu">Cebu</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="r-message">Additional Information</label>
+            <textarea id="r-message" name="Message" rows="4" placeholder="Tell us about your needs..."></textarea>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <i class="fas fa-paper-plane"></i> Submit Rental Inquiry
+          </button>
+        </form>
+      </div>
     </section>
 
     <section id="testimonials" class="tab-content">
@@ -393,16 +615,15 @@
       <div class="about-content">
         <div class="about-text">
           <h3>Our Story</h3>
-          
           <p>Established on January 16, 2019, Gold Corner Travel and Tours is a dedicated travel agency based in Ilog, Taal, Batangas, Philippines. We specialize in providing unforgettable travel experiences both domestically and internationally.</p>
           <p>Whether you're exploring the beautiful islands of the Philippines or venturing abroad, we're here to make your journey smooth, safe, and memorable. Our business is primarily conducted online, allowing clients to plan and book their travels with ease and convenience.</p>
-          <p>Gold Corner Travel & Tours was founded on a vision of excellence, with a commitment to deliver outstanding travel services while preparing for a secure future. As overseas Filipino workers (OFWs), the couple behind the agency understands the value of time and family.</p>
-          <h3>Our Mission</h3>
           
+          <h3>Our Mission</h3>
+          <p>Gold Corner Travel & Tours was founded on a vision of excellence, with a commitment to deliver outstanding travel services while preparing for a secure future. As overseas Filipino workers (OFWs), the couple behind the agency understands the value of time and family.</p>
           <p>Our mission goes beyond profit – at Gold Corner Travel & Tours, our Commitment is our Service. We uphold integrity, fairness, and dedication in every client interaction. We aim to provide a travel experience that's not only seamless, but also sincere and memorable.</p>
           
           <h3>Our Vision</h3>
-          <p>To become one of the most trusted and leading travel agencies in the Philippines and beyond, recognized for our personalized approach, exceptional service quality, and deep commitment to helping individuals and families create meaningful and memorable travel experiences.</p>
+          <p>To become one of the most trusted and leading travel agencies in the Philippines and beyond – recognized for our personalized approach, exceptional service quality, and deep commitment to helping individuals and families create meaningful and memorable travel experiences.</p>
           <p>We strive to continuously grow while staying grounded in the values that inspired our journey: family, service, and the belief that travel enriches lives.</p>
         </div>
         
@@ -500,133 +721,196 @@
         </div>
       </div>
     </section>
-    <section id="feedback" class="tab-content">
-  <h2><i class="fas fa-comment-alt"></i> Share Your Experience</h2>
-  <p class="section-intro">We value your feedback! Please share your travel experience with us to help us improve our services.</p>
-  
-  <div class="feedback-container">
-    <div class="feedback-form">
-      <h3>Submit Your Feedback</h3>
-      <form id="feedbackForm" action="https://formspree.io/f/mwpbvzvj" method="POST">
-        <input type="hidden" name="Feedback Type" value="Customer Feedback">
-        
-        <div class="form-group">
-          <label for="feedback-name">Name</label>
-          <input type="text" id="feedback-name" name="Name" placeholder="Your name">
-        </div>
-        
-        <div class="form-group">
-          <label for="feedback-email">Email</label>
-          <input type="email" id="feedback-email" name="Email" placeholder="Your email">
-        </div>
-        
-        <div class="form-group">
-          <label for="feedback-trip">Trip Details</label>
-          <input type="text" id="feedback-trip" name="Trip Details" placeholder="Destination and travel dates">
-        </div>
-        
-        <div class="form-group">
-          <label>Overall Rating</label>
-          <div class="rating-stars">
-            <input type="radio" id="star5" name="Rating" value="5">
-            <label for="star5"><i class="fas fa-star"></i></label>
-            <input type="radio" id="star4" name="Rating" value="4">
-            <label for="star4"><i class="fas fa-star"></i></label>
-            <input type="radio" id="star3" name="Rating" value="3">
-            <label for="star3"><i class="fas fa-star"></i></label>
-            <input type="radio" id="star2" name="Rating" value="2">
-            <label for="star2"><i class="fas fa-star"></i></label>
-            <input type="radio" id="star1" name="Rating" value="1">
-            <label for="star1"><i class="fas fa-star"></i></label>
+
+    <section id="partners" class="tab-content">
+      <h2><i class="fas fa-handshake"></i> Our Partners</h2>
+      <p class="section-intro">We collaborate with the best in the industry to bring you exceptional travel experiences.</p>
+      
+      <div class="partners-grid">
+        <div class="partner-card">
+          <div class="partner-logo">
+            <img src="https://via.placeholder.com/150x80" alt="Airline Partner">
           </div>
+          <h3>Philippine Airlines</h3>
+          <p>Our preferred airline partner offering special rates and benefits for our clients.</p>
         </div>
         
-        <div class="form-group">
-          <label for="feedback-message">Your Feedback</label>
-          <textarea id="feedback-message" name="Message" rows="5" placeholder="Share your experience with us..." required></textarea>
+        <div class="partner-card">
+          <div class="partner-logo">
+            <img src="https://via.placeholder.com/150x80" alt="Hotel Partner">
+          </div>
+          <h3>Booking</h3>
+          <p>Luxury accommodations with exclusive perks for Gold Corner clients.</p>
         </div>
         
-        <div class="form-group">
-          <label class="checkbox-label">
-            <input type="checkbox" name="Permission to Publish" value="Yes">
-            I give permission to publish my feedback (name will be displayed as initials)
-          </label>
+        <div class="partner-card">
+          <div class="partner-logo">
+            <img src="https://via.placeholder.com/150x80" alt="Insurance Partner">
+          </div>
+          <h3>Allianz Travel Insurance</h3>
+          <p>Comprehensive travel protection plans for your peace of mind.</p>
         </div>
         
-        <button type="submit" class="submit-button">
-          <i class="fas fa-paper-plane"></i> Submit Feedback
-        </button>
-      </form>
-    </div>
-    
-    <div class="feedback-testimonials">
-      <h3>Recent Feedback</h3>
-      <div class="feedback-items">
-        <!-- Sample feedback items - you can replace with real feedback -->
-        <div class="feedback-item">
-          <div class="feedback-header">
-            <div class="initials">JR</div>
-            <div class="feedback-meta">
-              <div class="feedback-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <div class="feedback-date">June 15, 2024</div>
-            </div>
+        <div class="partner-card">
+          <div class="partner-logo">
+            <img src="https://via.placeholder.com/150x80" alt="Tour Partner">
           </div>
-          <div class="feedback-content">
-            <p>"Our family vacation to Boracay was perfectly organized by Gold Corner. The hotel was excellent and all transfers were seamless. Will definitely use their services again!"</p>
-          </div>
+          <h3>Klook Experiences</h3>
+          <p>Exclusive access to the best tours and activities worldwide.</p>
         </div>
         
-        <div class="feedback-item">
-          <div class="feedback-header">
-            <div class="initials">MS</div>
-            <div class="feedback-meta">
-              <div class="feedback-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <div class="feedback-date">May 28, 2024</div>
-            </div>
+        <div class="partner-card">
+          <div class="partner-logo">
+            <img src="https://via.placeholder.com/150x80" alt="Rental Partner">
           </div>
-          <div class="feedback-content">
-            <p>"The villa we rented through Gold Corner was even better than the photos. Customer service was responsive throughout our stay. Highly recommended!"</p>
-          </div>
+          <h3>Airbnb Premium</h3>
+          <p>Curated selection of high-quality vacation rentals.</p>
         </div>
         
-        <div class="feedback-item">
-          <div class="feedback-header">
-            <div class="initials">AL</div>
-            <div class="feedback-meta">
-              <div class="feedback-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-              <div class="feedback-date">May 10, 2024</div>
-            </div>
+        <div class="partner-card">
+          <div class="partner-logo">
+            <img src="https://via.placeholder.com/150x80" alt="Car Rental Partner">
           </div>
-          <div class="feedback-content">
-            <p>"Great overall experience, though there was a small mix-up with our airport transfer. The team resolved it quickly and professionally."</p>
-          </div>
+          <h3>Avis Car Rental</h3>
+          <p>Premium vehicles with special rates for our clients.</p>
         </div>
       </div>
       
-      <div class="feedback-cta">
-        <p>Your feedback helps us improve our services for future travelers.</p>
+      <div class="become-partner">
+        <h3>Become a Partner</h3>
+        <p>Interested in partnering with Gold Corner Travel and Tours?</p>
+        <p>We are always looking for new collaborations to enhance our offerings. If you represent a travel service provider, hotel, or tour operator, we would love to hear from you!</p>
+
+        <a href="mailto:info@goldcornertravel.com" class="cta-button">Contact Us</a>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <section id="feedback" class="tab-content">
+      <h2><i class="fas fa-comment-alt"></i> Share Your Experience</h2>
+      <p class="section-intro">We value your feedback! Please share your travel experience with us to help us improve our services.</p>
+      
+      <div class="feedback-container">
+        <div class="feedback-form">
+          <h3>Submit Your Feedback</h3>
+          <form id="feedbackForm" action="https://formspree.io/f/mwpbvzvj" method="POST">
+            <input type="hidden" name="Feedback Type" value="Customer Feedback">
+            
+            <div class="form-group">
+              <label for="feedback-name">Name</label>
+              <input type="text" id="feedback-name" name="Name" placeholder="Your name">
+            </div>
+            
+            <div class="form-group">
+              <label for="feedback-email">Email</label>
+              <input type="email" id="feedback-email" name="Email" placeholder="Your email">
+            </div>
+            
+            <div class="form-group">
+              <label for="feedback-trip">Trip Details</label>
+              <input type="text" id="feedback-trip" name="Trip Details" placeholder="Destination and travel dates">
+            </div>
+            
+            <div class="form-group">
+              <label>Overall Rating</label>
+              <div class="rating-stars">
+                <input type="radio" id="star5" name="Rating" value="5">
+                <label for="star5"><i class="fas fa-star"></i></label>
+                <input type="radio" id="star4" name="Rating" value="4">
+                <label for="star4"><i class="fas fa-star"></i></label>
+                <input type="radio" id="star3" name="Rating" value="3">
+                <label for="star3"><i class="fas fa-star"></i></label>
+                <input type="radio" id="star2" name="Rating" value="2">
+                <label for="star2"><i class="fas fa-star"></i></label>
+                <input type="radio" id="star1" name="Rating" value="1">
+                <label for="star1"><i class="fas fa-star"></i></label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="feedback-message">Your Feedback</label>
+              <textarea id="feedback-message" name="Message" rows="5" placeholder="Share your experience with us..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="Permission to Publish" value="Yes">
+                I give permission to publish my feedback (name will be displayed as initials)
+              </label>
+            </div>
+            
+            <button type="submit" class="submit-button">
+              <i class="fas fa-paper-plane"></i> Submit Feedback
+            </button>
+          </form>
+        </div>
+        
+        <div class="feedback-testimonials">
+          <h3>Recent Feedback</h3>
+          <div class="feedback-items">
+            <div class="feedback-item">
+              <div class="feedback-header">
+                <div class="initials">JR</div>
+                <div class="feedback-meta">
+                  <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="feedback-date">June 15, 2024</div>
+                </div>
+              </div>
+              <div class="feedback-content">
+                <p>"Our family vacation to Boracay was perfectly organized by Gold Corner. The hotel was excellent and all transfers were seamless. Will definitely use their services again!"</p>
+              </div>
+            </div>
+            
+            <div class="feedback-item">
+              <div class="feedback-header">
+                <div class="initials">MS</div>
+                <div class="feedback-meta">
+                  <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="feedback-date">May 28, 2024</div>
+                </div>
+              </div>
+              <div class="feedback-content">
+                <p>"The villa we rented through Gold Corner was even better than the photos. Customer service was responsive throughout our stay. Highly recommended!"</p>
+              </div>
+            </div>
+            
+            <div class="feedback-item">
+              <div class="feedback-header">
+                <div class="initials">AL</div>
+                <div class="feedback-meta">
+                  <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <div class="feedback-date">May 10, 2024</div>
+                </div>
+              </div>
+              <div class="feedback-content">
+                <p>"Great overall experience, though there was a small mix-up with our airport transfer. The team resolved it quickly and professionally."</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="feedback-cta">
+            <p>Your feedback helps us improve our services for future travelers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -639,6 +923,7 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
+          <!-- Use IDs for navigation, go to their links in the page -->
           <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#rentals">House Rentals</a></li>
@@ -658,8 +943,9 @@
         <h3>Follow Us</h3>
         <div class="social-icons">
           <a href="https://www.facebook.com/lorie.adame.77" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
+          <!-- instagram and twitter for future, call javascript for future development -->
+          <a href="#" onclick="alert('Instagram link coming soon!')"><i class="fab fa-instagram"></i></a>
+          <a href="#" onclick="alert('Twitter link coming soon!')"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
     </div>
@@ -669,7 +955,5 @@
       <p>Registered Travel Agency | DOT Accreditation No: XXXXXX</p>
     </div>
   </footer>
-
-  <script src="tabs.js"></script>
 </body>
 </html>
